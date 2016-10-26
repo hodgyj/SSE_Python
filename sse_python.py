@@ -15,7 +15,7 @@ def sse_register_game(icon_id):
         game_metadata = {
             "game": game_name,
             "game_display_name": game_friendly_name,
-            "icon_colour_id": icon_id
+            "icon_color_id": icon_id
         }
         json_post(sse_address + "/game_metadata", game_metadata)
 
