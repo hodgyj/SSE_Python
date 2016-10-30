@@ -8,10 +8,12 @@ game_name = ""
 game_friendly_name = ""
 
 def json_post(url, data):
-    r = requests.post(url, json=data)
-    if r.status_code != 200:
-        sse_running = False
+    if not sse_running:
         sse_status()
+    if sse_running:
+        r = requests.post(url, json=data)
+        if r.status_code != 200:
+            print("Error sending data to SteelSeries Engine. Error Code: " + r.status_code)
 
 def register_game(icon_id):
     if sse_running:
