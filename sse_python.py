@@ -31,14 +31,15 @@ def remove_game():
         }
         json_post(sse_address + "/remove_game", game_metadata)
 
-def register_event(event, minimum, maximum, icon_id=0):
+def register_event(event, minimum, maximum, icon_id=0, handlers=[]):
     if sse_running:
         event_data = {
             "game": game_name,
             "event": event,
             "min_value": minimum,
             "max_value": maximum,
-            "icon_id": icon_id
+            "icon_id": icon_id,
+            "handlers": handlers # See https://github.com/SteelSeries/gamesense-sdk/blob/master/doc/api/writing-handlers-in-json.md#binding-an-event
         }
         json_post(sse_address + "/register_game_event", event_data)
 
